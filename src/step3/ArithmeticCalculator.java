@@ -11,34 +11,34 @@ public class ArithmeticCalculator<T extends Number> {
         this.results = new ArrayList<>();
     }
 
-    public double calculate(T num1, OperatorType operator, T num2) {
+    public double calculate(T num1, OperatorType operator, T num2) throws ArithmeticException {
         double result = 0;
 
         switch (operator) {
             case PLUS:
                 result = num1.doubleValue() + num2.doubleValue();
                 break;
-            case  MINUS:
+            case MINUS:
                 result = num1.doubleValue() - num2.doubleValue();
                 break;
             case MULTIPLY:
                 result = num1.doubleValue() * num2.doubleValue();
                 break;
-                case DIVIDE:
-                    if (num2.doubleValue() == 0) {
-                        throw new ArithmeticException("0으로 나눌 수 없습니다.");
-                    }
-                    result = num1.doubleValue()/ num2.doubleValue();
-                    break;
+            case DIVIDE:
+                if (num2.doubleValue() == 0) {
+                    throw new ArithmeticException("0으로 나눌 수 없습니다.");
+                }
+                result = num1.doubleValue() / num2.doubleValue();
+                break;
         }
-        return  result;
+        return result;
     }
 
     public List<Double> getResults() {
         return new ArrayList<>(results);
     }
 
-    public void setResults(double result) {
+    public void setResult(double result) {
         this.results.add(result);
     }
 
@@ -49,7 +49,10 @@ public class ArithmeticCalculator<T extends Number> {
             System.out.println("저장된 결과가 없습니다.");
         }
     }
+
     public List<Double> getResultsGreaterThan(double value) {
-        return results.stream().filter(result -> result > value).collect(Collectors.toList());
+        return results.stream()
+                .filter(result -> result > value)
+                .collect(Collectors.toList());
     }
 }

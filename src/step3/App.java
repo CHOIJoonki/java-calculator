@@ -19,7 +19,7 @@ public class App {
                 continue;
             }
             if (num1 < 0) {
-                System.out.println("잘못된 숫자입니다. 양의 정수만 입력해주세요");
+                System.out.println("잘못된 숫자입니다. 양의 숫자만 입력해주세요");
                 continue;
             }
             if (Double.isInfinite(num1) || Double.isNaN(num1)) {
@@ -56,33 +56,43 @@ public class App {
                     continue;
                 }
                 if (num2 < 0) {
-                    System.out.println("잘못된 숫자입니다. 양의 정수만 입력해주세요");
+                    System.out.println("잘못된 숫자입니다. 양의 숫자만 입력해주세요");
                     continue;
                 }
                 if (Double.isInfinite(num2) || Double.isNaN(num2)) {
                     System.out.println("유효하지 않은 숫자입니다.");
                     continue;
                 }
-                if (num2 == 0 && operator == OperatorType.DIVIDE) {
+                if (operator == OperatorType.DIVIDE && num2 == 0) {
                     System.out.println("0으로 나눌 수 없습니다.");
                     continue;
                 }
                 break;
             }
 
-            try{
+            try {
                 double result = calculator.calculate(num1, operator, num2);
 
-                calculator.setResults(result);
+                calculator.setResult(result);
+
                 System.out.println("결과: " + result);
                 System.out.println("저장된 결과: " + calculator.getResults());
+
+                System.out.print("특정 값보다 큰 결과만 조회하시겠습니까? (숫자 입력 시 조회, 그 외 입력 시 넘어가기): ");
+                String filterInput = sc.nextLine();
+                try {
+                    double standard = Double.parseDouble(filterInput);
+                    List<Double> filteredResults = calculator.getResultsGreaterThan(standard);
+                    System.out.println(standard + "보다 큰 결과: " + filteredResults);
+                } catch (NumberFormatException e) {
+                }
             } catch (ArithmeticException e) {
-                System.out.println("계산 오류");
+                System.out.println("계산 오류: " + e.getMessage());
                 continue;
             }
 
             while (true) {
-                System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, remove 입력 시 가장 먼저 저장된 결과 삭제, 다른 값 입력 시 계속)");
+                System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, remove 입력 시 가장 먼저 저장된 결과 삭제, biggerthan 입력 시 조회, 다른 값 입력 시 계속)");
                 String command = sc.nextLine();
                 if (command.equals("exit")) {
                     sc.close();
@@ -90,10 +100,12 @@ public class App {
                 } else if (command.equals("remove")) {
                     calculator.removeResult();
                     System.out.println("저장된 결과: " + calculator.getResults());
+                } else if (command.equals("biggerthan")) {
+                    System.out.print("기준값을 입력하세요: ");
                     try {
-                        double threshold = Double.parseDouble(sc.nextLine());
-                        List<Double> filteredResults = calculator.getResultsGreaterThan(threshold);
-                        System.out.println(threshold + "보다 큰 결과: " + filteredResults);
+                        double standard = Double.parseDouble(sc.nextLine());
+                        List<Double> filteredResults = calculator.getResultsGreaterThan(standard);
+                        System.out.println(standard + "보다 큰 결과: " + filteredResults);
                     } catch (NumberFormatException e) {
                         System.out.println("올바른 숫자를 입력하세요.");
                     }
