@@ -17,6 +17,10 @@ public class App {
 
             System.out.print("사칙연산 기호를 입력하세요: ");
             char operator = sc.next().charAt(0);
+            if (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
+                System.out.println("잘못된 연산자입니다. 다시 입력해주세요");
+                continue;
+            }
 
             System.out.print("두 번째 숫자를 입력하세요: ");
             int num2 = sc.nextInt();
@@ -27,6 +31,7 @@ public class App {
 
             int result = 0;
 
+            //TODO: 스위치문으로 하기
             if (operator == '+') {
                 result = num1 + num2;
             } else if (operator == '-') {
@@ -36,12 +41,9 @@ public class App {
             } else if (operator == '/') {
                 if (num2 == 0) {
                     System.out.println("0으로 나눌 수 없습니다.");
-                    continue; //자동완성해주었다.
+                    continue;
                 }
                 result = num1 / num2;
-            } else {
-                System.out.println("잘못된 연산자입니다. 다시 입력해주세요");
-                continue;
             }
 
             System.out.println("결과: " + result);
@@ -53,6 +55,6 @@ public class App {
                 break;
             }
         }
-
+        sc.close();
     }
 }
