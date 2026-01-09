@@ -15,11 +15,16 @@ public class App {
                 continue;
             }
 
-            System.out.print("사칙연산 기호를 입력하세요: ");
-            char operator = sc.next().charAt(0);
-            if (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
-                System.out.println("잘못된 연산자입니다. 다시 입력해주세요");
-                continue;
+            char operator;
+            while (true) {
+                System.out.print("사칙연산 기호를 입력하세요: ");
+                operator = sc.next().charAt(0);
+
+                if (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
+                    System.out.println("잘못된 연산자입니다. 다시 입력해주세요");
+                    continue;
+                }
+                break;
             }
 
             System.out.print("두 번째 숫자를 입력하세요: ");
