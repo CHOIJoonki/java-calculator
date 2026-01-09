@@ -63,6 +63,16 @@ public class App {
 
             int result = calculator.calculate(num1, operator, num2);
             System.out.println("결과: " + result);
+            System.out.println("저장된 결과: " + calculator.getResults());
+
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, remove 입력 시 가장 먼저 저장된 결과 삭제, 다른 값 입력 시 계속)");
+            String command = sc.nextLine();
+            if (command.equals("exit")) {
+                break;
+            } else if (command.equals("remove")) {
+                calculator.removeResult();
+                System.out.println("저장된 결과: " + calculator.getResults());
+            }
         }
     }
 }

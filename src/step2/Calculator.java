@@ -29,4 +29,16 @@ public class Calculator {
         results.add(result);
         return result;
     }
+
+    public ArrayList<Integer> getResults() {
+        return results;
+    }
+
+    public void removeResult() {
+        if (!results.isEmpty()) {
+            results.remove(0);
+        } else {
+            System.out.println("저장된 결과가 없습니다.");
+        }
+    }
 }
