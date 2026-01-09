@@ -13,12 +13,11 @@ public enum OperatorType {
     }
 
     public static OperatorType fromSymbol(char symbol) {
-        for (OperatorType operator : values()) {
-            if (operator.symbol == symbol) {
-                return operator;
+        for (OperatorType type : values()) {
+            if (type.symbol == symbol) {
+                return type;
             }
         }
         return null;
     }
 }
-
