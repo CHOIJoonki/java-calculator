@@ -2,6 +2,7 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {
     private List<Double> results;
@@ -47,5 +48,8 @@ public class ArithmeticCalculator<T extends Number> {
         } else {
             System.out.println("저장된 결과가 없습니다.");
         }
+    }
+    public List<Double> getResultsGreaterThan(double value) {
+        return results.stream().filter(result -> result > value).collect(Collectors.toList());
     }
 }

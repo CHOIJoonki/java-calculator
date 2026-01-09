@@ -12,10 +12,6 @@ public enum OperatorType {
         this.symbol = symbol;
     }
 
-    public char getSymbol() {
-        return symbol;
-    }
-
     public static OperatorType fromSymbol(char symbol) {
         for (OperatorType operator : values()) {
             if (operator.symbol == symbol) {
