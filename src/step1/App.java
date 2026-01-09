@@ -7,7 +7,6 @@ public class App {
     static void main() {
         Scanner sc = new Scanner(System.in);
 
-        //TODO: 조건문 exit
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             int num1 = sc.nextInt();
@@ -33,14 +32,18 @@ public class App {
                 }
                 result = num1 / num2;
             } else {
-                System.out.println("잘못된 연산자입니다.");
+                System.out.println("잘못된 연산자입니다. 다시 입력해주세요");
                 continue;
             }
 
             System.out.println("결과: " + result);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            /* exit을 입력 받으면 반복 종료 */
+
+            String exit = sc.next();
+            if (exit.equals("exit")) {
+                break;
+            }
         }
 
     }
