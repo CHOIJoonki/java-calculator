@@ -33,8 +33,8 @@ public class Calculator {
         return results;
     }
 
-    public void setResults(ArrayList<Integer> results) {
-        this.results = results;
+    public void setResult(int result) {
+        this.results.add(result);
     }
 
     public void removeResult() {

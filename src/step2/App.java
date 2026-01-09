@@ -64,9 +64,7 @@ public class App {
 
             int result = calculator.calculate(num1, operator, num2);
 
-            ArrayList<Integer> currentResults = calculator.getResults();
-            currentResults.add(result);
-            calculator.setResults(currentResults);
+            calculator.setResult(result);
 
             System.out.println("결과: " + result);
             System.out.println("저장된 결과: " + calculator.getResults());
