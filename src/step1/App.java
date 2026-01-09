@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
 
-    static void main() {
+    public static void main() {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +27,7 @@ public class App {
                 String operatorInput = sc.nextLine();
 
                 if (operatorInput.length() != 1) {
-                    System.out.println("올바를 사칙연산 기로를 입력하세요.");
+                    System.out.println("올바른 사칙연산 기로를 입력하세요.");
                     continue;
                 }
 
@@ -80,7 +80,7 @@ public class App {
             System.out.println("결과: " + result);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, 다른 값 입력 시 계속)");
-            String exit = sc.next();
+            String exit = sc.nextLine();
             if (exit.equals("exit")) {
                 break;
             }
