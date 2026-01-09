@@ -1,37 +1,44 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ArithmeticCalculator {
-    private ArrayList<Integer> results;
+public class ArithmeticCalculator<T extends Number> {
+    private List<Double> results;
 
     public ArithmeticCalculator() {
         this.results = new ArrayList<>();
     }
 
-    public int calculate(int num1, char operator, int num2) {
-        int result = 0;
+    public double calculate(T num1, OperatorType operator, T num2) {
+        double result = 0;
 
         switch (operator) {
-            case '+':
-                result = num1 + num2;
+            case PLUS:
+                result = num1.doubleValue() + num2.doubleValue();
                 break;
-            case '-':
-                result = num1 - num2;
+            case  MINUS:
+                result = num1.doubleValue() - num2.doubleValue();
                 break;
-            case '*':
-                result = num1 * num2;
+            case MULTIPLY:
+                result = num1.doubleValue() * num2.doubleValue();
                 break;
-            case '/':
-                result = num1 / num2;
-                break;
+                case DIVIDE:
+                    if (num2.doubleValue() == 0) {
+                        throw new ArithmeticException("0으로 나눌 수 없습니다.");
+                    }
+                    result = num1.doubleValue()/ num2.doubleValue();
+                    break;
         }
-        results.add(result);
-        return result;
+        return  result;
     }
 
-    public ArrayList<Integer> getResults() {
-        return results;
+    public List<Double> getResults() {
+        return new ArrayList<>(results);
+    }
+
+    public void setResults(double result) {
+        this.results.add(result);
     }
 
     public void removeResult() {
