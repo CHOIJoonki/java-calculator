@@ -26,12 +26,15 @@ public class Calculator {
                 result = num1 / num2;
                 break;
         }
-        results.add(result);
         return result;
     }
 
     public ArrayList<Integer> getResults() {
         return results;
+    }
+
+    public void setResults(ArrayList<Integer> results) {
+        this.results = results;
     }
 
     public void removeResult() {

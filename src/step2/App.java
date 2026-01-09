@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -62,6 +63,11 @@ public class App {
             }
 
             int result = calculator.calculate(num1, operator, num2);
+
+            ArrayList<Integer> currentResults = calculator.getResults();
+            currentResults.add(result);
+            calculator.setResults(currentResults);
+
             System.out.println("결과: " + result);
             System.out.println("저장된 결과: " + calculator.getResults());
 
@@ -74,5 +80,6 @@ public class App {
                 System.out.println("저장된 결과: " + calculator.getResults());
             }
         }
+        sc.close();
     }
 }
