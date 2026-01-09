@@ -40,17 +40,24 @@ public class App {
                 break;
             }
 
-            System.out.print("두 번째 숫자를 입력하세요: ");
             int num2;
-            try {
-                num2 = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("정수를 입력해야 합니다.");
-                continue;
-            }
-            if (num2 < 0) {
-                System.out.println("잘못된 숫자입니다. 양의 정수만 입력해주세요");
-                continue;
+            while (true) {
+                System.out.print("두 번째 숫자를 입력하세요: ");
+                try {
+                    num2 = Integer.parseInt(sc.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("정수를 입력해야 합니다.");
+                    continue;
+                }
+                if (num2 < 0) {
+                    System.out.println("잘못된 숫자입니다. 양의 정수만 입력해주세요");
+                    continue;
+                }
+                if (num2 == 0 && operator == '/') {
+                    System.out.println("0으로 나눌 수 없습니다.");
+                    continue;
+                }
+                break;
             }
 
             int result = 0;
@@ -66,13 +73,9 @@ public class App {
                     result = num1 * num2;
                     break;
                 case '/':
-                    if (num2 == 0) {
-                        System.out.println("0으로 나눌 수 없습니다.");
-                        continue;
-                    }
                     result = num1 / num2;
                     break;
-            }// 자동완성이 많은것을 해주었다...
+            }
 
             System.out.println("결과: " + result);
 
